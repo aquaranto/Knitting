@@ -1,7 +1,10 @@
 class Pattern
+  attr_reader :name
   attr_accessor :rows
-  def initialize
+
+  def initialize(name)
     @rows = []
+    @name = name.capitalize
   end
 
   def add_row(stitch_args)

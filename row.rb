@@ -23,7 +23,7 @@ class Row
   end
 
   def initialize(row_number)
-    @row_number = row_number
+    @row_number = row_number.to_i
   end
 
   def even?
