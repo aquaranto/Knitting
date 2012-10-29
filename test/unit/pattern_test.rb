@@ -2,18 +2,18 @@ require 'minitest_helper'
 require './pattern'
 require './row'
 require './stitch'
+require './cast_on'
 
-describe Pattern do
-  StitchComposite = Struct.new(:stitch,:count)
-    
+describe Pattern do 
   before do
     @pattern = Pattern.new('test_banana_pattern')
+    cast_on = CastOn.new
     
     #stitches can be any object that responds to stitch and count
     @stitches = []
-    @stitches << StitchComposite.new(Knit.new,3)
-    @stitches << StitchComposite.new(Purl.new,2)
-    @stitches << StitchComposite.new(Knit.new,4)
+    @stitches << cast_on.stitch(:knit, 3)
+    @stitches << cast_on.stitch(:purl, 2)
+    @stitches << cast_on.stitch(:knit, 4)
   end
 
   it "must have a capitalized name" do
