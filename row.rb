@@ -5,7 +5,7 @@ class Row
     new_row = new(row_number)
     new_row.unparsed_string = string
     new_row.parse
-    new_row
+    p new_row
   end
 
   def self.new_from_stitches(row_number, stitches)
@@ -33,6 +33,7 @@ class Row
   private
 
   def parse_string
+    scan(/((.)\2*)/).map(&:first)
   end
 
   def parse_pattern

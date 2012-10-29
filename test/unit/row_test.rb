@@ -32,6 +32,10 @@ describe Row do
     @odd_row.even?.must_equal(false)
   end
 
+  it "must parse a pattern row properly" do
+    row = Row.new_from_pattern(@row_number, "VVV--V--VVV")
+  end
+
   #it "must parse a string properly" do
   #  Row.new_from_string()
   #end
