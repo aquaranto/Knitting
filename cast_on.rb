@@ -1,20 +1,19 @@
 require './stitch'
 
 class CastOn
-  attr_reader :count
+  attr_reader :count, :type
 
+  def initialize(type, count)
+    @type = type
+    @count = count
+  end
   #creates count number of stitch objects
-  def stitch(type, count)
-    stitches = []
-    count.times do
-      if type == :knit
-        stitches << Knit.new
-      elsif type == :purl
-        stitches << Purl.new
-      else
-        #expand for other stitches
-      end
+  #expand for other stitches
+  def stitch_create(type)
+    if type == :knit
+      stitches << Knit.new
+    elsif type == :purl
+      stitches << Purl.new
     end
-    stitches.join
   end
 end

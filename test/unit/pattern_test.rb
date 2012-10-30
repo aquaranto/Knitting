@@ -7,13 +7,8 @@ require './cast_on'
 describe Pattern do 
   before do
     @pattern = Pattern.new('test_banana_pattern')
-    cast_on = CastOn.new
-    
     #stitches can be any object that responds to stitch and count
-    @stitches = []
-    @stitches << cast_on.stitch(:knit, 3)
-    @stitches << cast_on.stitch(:purl, 2)
-    @stitches << cast_on.stitch(:knit, 4)
+    @stitches = ['k3', 'p2', 'k2', 'p2', 'k3']
   end
 
   it "must have a capitalized name" do

@@ -7,6 +7,7 @@ describe Row do
     @odd_number = 1
     @row = Row.new(@row_number)
     @odd_row = Row.new(@odd_number)
+    @stitch_args = ['k3', 'p2', 'k2', 'p2', 'k3']
   end
 
   it "must have consistent api" do
@@ -32,8 +33,12 @@ describe Row do
     @odd_row.even?.must_equal(false)
   end
 
-  it "must parse a pattern row properly" do
-    row = Row.new_from_pattern(@row_number, "VVV--V--VVV")
+  #it "must parse a pattern row properly" do
+  #  row = Row.new_from_pattern(@row_number, "VVV--V--VVV")
+  #end
+
+  it "must take the stitch args and parse into cast_on objects" do
+    row = Row.new_from_stitches(@row_number, @stitch_args)
   end
 
   #it "must parse a string properly" do
