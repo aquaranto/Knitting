@@ -1,11 +1,10 @@
 #require 'cast_on'
 class Row
-  attr_accessor :stitches, :row_number, :unparsed_string, :unparsed_pattern
+  attr_accessor :stitches, :row_number, :parsed_string, :unparsed_pattern
 
-  def self.new_from_pattern(row_number, string)
+  def self.new_from_visual(row_number, string)
     new_row = new(row_number)
-    new_row.unparsed_string = string
-    new_row = new_row.unparsed_string.parse
+    new_row.parsed_string = string.parse_string
     p new_row
   end
 
@@ -21,7 +20,7 @@ class Row
       stitch_count = pair[1].to_i
       new_row.stitches << CastOn.new(stitch_type, stitch_count)
     end
-    p new_row
+    new_row
   end
 
   def parse
@@ -40,12 +39,13 @@ class Row
     @row_number % 2 == 0
   end
 
-  private
-
-  def parse_string
-    scan(/((.)\2*)/).map(&:first)
-  end
 
   def parse_pattern
+  end
+end
+
+class String
+  def parse_string
+    scan(/((.)\2*)/).map(&:first)
   end
 end

@@ -11,9 +11,9 @@ describe Row do
   end
 
   it "must have consistent api" do
-    Row.must_respond_to(:new_from_pattern)
+    Row.must_respond_to(:new_from_visual)
     Row.must_respond_to(:new_from_stitches)
-    @row.must_respond_to(:unparsed_string)
+    @row.must_respond_to(:parsed_string)
     @row.must_respond_to(:unparsed_pattern)
     @row.must_respond_to(:parse)
     @row.must_respond_to(:stitches)
@@ -33,9 +33,9 @@ describe Row do
     @odd_row.even?.must_equal(false)
   end
 
-  #it "must parse a pattern row properly" do
-  #  row = Row.new_from_pattern(@row_number, "VVV--V--VVV")
-  #end
+  it "must parse a pattern row properly" do
+    row = Row.new_from_visual(@row_number, "VVV--V--VVV")
+  end
 
   it "must take the stitch args and parse into cast_on objects" do
     row = Row.new_from_stitches(@row_number, @stitch_args)
