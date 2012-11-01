@@ -15,11 +15,15 @@ class CastOn
   end
   #creates count number of stitch objects
   #expand for other stitches
-  def stitch_create(type)
-    if type == :knit
-      stitches << Knit.new
-    elsif type == :purl
-      stitches << Purl.new
+  def stitch_create
+    stitches = []
+    @count.times do
+      if @type == :knit
+        stitches << Knit.new
+      elsif @type == :purl
+        stitches << Purl.new
+      end
     end
+    stitches.join
   end
 end

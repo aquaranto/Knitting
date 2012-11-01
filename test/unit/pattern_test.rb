@@ -8,7 +8,10 @@ describe Pattern do
   before do
     @pattern = Pattern.new('test_banana_pattern')
     #stitches can be any object that responds to stitch and count
-    @stitches = ['k3', 'p2', 'k2', 'p2', 'k3']
+    @stitches_row_1 = ['k3', 'p2', 'k2', 'p2', 'k3']
+    @stitches_row_2 = ['k2', 'p3', 'k2', 'p3', 'k2']
+    @stitches_visual_row_1 = 'VVV--VV--VVV'
+    @stitches_visual_row_2 = 'VV---VV---VV'
   end
 
   it "must have a capitalized name" do
@@ -21,8 +24,26 @@ describe Pattern do
   end
 
   it "must properly add a row" do
-    @pattern.add_row @stitches
+    @pattern.add_row @stitches_row_1
     @pattern.rows.wont_be_empty
   end
+
+  it "must properly add multiple rows" do
+    @pattern.add_row @stitches_row_1
+    @pattern.add_row @stitches_row_2
+    #p @pattern.rows
+    @pattern.rows.length.must_equal 2
+  end
   
+  it "must properly add a row from visual" do
+    @pattern.add_visual_row @stitches_visual_row_1
+    @pattern.rows.wont_be_empty
+  end
+
+  it "must properly add multiple rows from visual" do
+    @pattern.add_visual_row @stitches_visual_row_1
+    @pattern.add_visual_row @stitches_visual_row_2
+    #p @pattern.rows
+    @pattern.rows.length.must_equal 2
+  end
 end

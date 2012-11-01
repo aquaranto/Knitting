@@ -1,11 +1,12 @@
 #require 'cast_on'
 class Row
-  attr_accessor :stitches, :row_number, :parsed_string, :unparsed_pattern
+  attr_accessor :stitches, :row_number, :parsed_string, :unparsed_pattern, :casted_on
 
   def self.new_from_visual(row_number, string)
     new_row = new(row_number)
     new_row.parsed_string = string.parse_string
-    p new_row
+    new_row.casted_on = CastOn.number_to_cast_on(new_row.parsed_string)
+    new_row
   end
 
   def self.new_from_stitches(row_number, stitch_args)
@@ -37,10 +38,6 @@ class Row
 
   def even?
     @row_number % 2 == 0
-  end
-
-
-  def parse_pattern
   end
 end
 

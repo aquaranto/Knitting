@@ -5,9 +5,11 @@ describe Row do
   before do 
     @row_number = 2
     @odd_number = 1
-    @row = Row.new(@row_number)
-    @odd_row = Row.new(@odd_number)
     @stitch_args = ['k3', 'p2', 'k2', 'p2', 'k3']
+    @row = Row.new_from_stitches(@row_number, @stitch_args)
+    @odd_row = Row.new_from_stitches(@odd_number, @stitch_args)
+    @visual_row = Row.new_from_visual(@row_number, "VVV--V--VVV")
+    
   end
 
   it "must have consistent api" do
@@ -19,6 +21,7 @@ describe Row do
     @row.must_respond_to(:stitches)
     @row.must_respond_to(:row_number)
     @row.must_respond_to(:even?)
+    @row.must_respond_to(:casted_on)
   end
 
   it "must return a valid row number" do
@@ -33,15 +36,11 @@ describe Row do
     @odd_row.even?.must_equal(false)
   end
 
-  it "must parse a pattern row properly" do
-    row = Row.new_from_visual(@row_number, "VVV--V--VVV")
-  end
-
   it "must take the stitch args and parse into cast_on objects" do
-    row = Row.new_from_stitches(@row_number, @stitch_args)
+    @row.stitches[0].must_be_instance_of CastOn
   end
 
-  #it "must parse a string properly" do
-  #  Row.new_from_string()
-  #end
+  it "must calculate the number of stitches to cast on" do
+    @visual_row.casted_on.must_equal 11
+  end
 end
