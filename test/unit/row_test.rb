@@ -17,7 +17,6 @@ describe Row do
     Row.must_respond_to(:new_from_stitches)
     @row.must_respond_to(:parsed_string)
     @row.must_respond_to(:unparsed_pattern)
-    @row.must_respond_to(:parse)
     @row.must_respond_to(:stitches)
     @row.must_respond_to(:row_number)
     @row.must_respond_to(:even?)

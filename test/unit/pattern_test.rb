@@ -36,14 +36,14 @@ describe Pattern do
   end
   
   it "must properly add a row from visual" do
-    @pattern.add_visual_row @stitches_visual_row_1
+    @pattern.add_row @stitches_visual_row_1
     @pattern.rows.wont_be_empty
   end
 
   it "must properly add multiple rows from visual" do
-    @pattern.add_visual_row @stitches_visual_row_1
-    @pattern.add_visual_row @stitches_visual_row_2
-    #p @pattern.rows
+    @pattern.add_row @stitches_visual_row_1
+    @pattern.add_row @stitches_visual_row_2
+    p @pattern.rows
     @pattern.rows.length.must_equal 2
   end
 end
