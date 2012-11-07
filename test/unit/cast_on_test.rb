@@ -10,7 +10,7 @@ describe CastOn do
 
   it "must have consistent api" do
     @cast_on_knit.must_respond_to(:type)
-    @cast_on_knit.must_respond_to(:count) 
+    @cast_on_knit.must_respond_to(:stitch_count) 
     @cast_on_knit.must_respond_to(:stitch_create)
   end
 

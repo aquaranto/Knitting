@@ -1,7 +1,7 @@
 require './stitch'
 
 class CastOn
-  attr_reader :count, :type
+  attr_reader :stitch_count, :type
   
   #determines the number of stitches to cast on using the visual reprensentations
   def self.number_to_cast_on(stitches_from_visual)
@@ -11,9 +11,9 @@ class CastOn
   end
   
   #creates a new instance of CastOn which knows its type and count
-  def initialize(type, count)
+  def initialize(type, stitch_count)
     @type = type
-    @count = count
+    @stitch_count = stitch_count
   end
 
   #creates count number of stitch objects and joins them (expand for other stitches)
