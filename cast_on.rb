@@ -19,7 +19,7 @@ class CastOn
   #creates count number of stitch objects and joins them (expand for other stitches)
   def stitch_create
     stitches = []
-    @count.times do
+    @stitch_count.times do
       if @type == :knit
         stitches << Knit.new
       elsif @type == :purl

@@ -43,7 +43,7 @@ describe Pattern do
   it "must properly add multiple rows from visual" do
     @pattern.add_row @stitches_visual_row_1
     @pattern.add_row @stitches_visual_row_2
-    p @pattern.rows
+    #p @pattern.rows
     @pattern.rows.length.must_equal 2
   end
 end
