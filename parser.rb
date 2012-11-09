@@ -1,41 +1,49 @@
 require "./pattern"
 
-
-
-#def method_missing(meth, *args, &block)
-#  p meth 
-#  p args
-#end
-
-
-
-class Parser
-  def parse(filename)
-    content = File.read File.expand_path("./#{filename}")
-    eval(content)
-    p @stitches
-  end
-
-  def pattern(name)
-    @pattern = Pattern.new(name)
-    @stitches = []
-  end
-
-  def cast_on(stitch_count)
-    @stitch_count = stitch_count
-  end
-
-  def method_missing(meth, *args, &block)
-    if meth.to_s.match(/k(\d+)/)
-      @stitches << "k#{$1}"
-    elsif meth.to_s.match(/p(\d+)/)
-      @stitches << "p#{$1}"
+module Parser
+  class Stitches
+    attr_accessor :stitches, :patterns
+    def self.parse(filename)
+      content = File.read(File.expand_path("./#{filename}"))
+      parser = new
+      parser.instance_eval(content)
+      parser
     end
+
+    def initialize
+      @patterns = []
+    end
+
+    def pattern(name)
+      @patterns << @pattern = Pattern.new(name)
+    end
+
+    def row(number, *args)
+      @pattern.add_row(args)
+    end
+
+    def cast_on(stitch_count)
+      @stitch_count = stitch_count
+    end
+
+    def repeat(rows_to_repeat, times_to_repeat)
+    end
+
+    def method_missing(meth, *args, &block)
+      if meth.to_s.match(/k(\d+)/)
+        "k#{$1}"
+      elsif meth.to_s.match(/p(\d+)/)
+        "p#{$1}"
+      else
+        super
+      end
+    end
+
   end
 end
 
-
-Parser.new.parse "sample_dsl_program.kt"
-
-
-
+knitter = Parser::Stitches.parse "sample_dsl_program.kt"
+knitter.patterns.each do |pattern|
+  p pattern.name
+  pattern.render
+end

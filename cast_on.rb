@@ -26,6 +26,6 @@ class CastOn
         stitches << Purl.new
       end
     end
-    stitches.join
+    stitches
   end
 end

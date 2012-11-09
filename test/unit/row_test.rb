@@ -36,7 +36,7 @@ describe Row do
   end
 
   it "must take the stitch args and parse into cast_on objects" do
-    @row.stitches[0].must_be_instance_of CastOn
+    @row.stitches[0].must_be_kind_of Stitch
   end
 
   it "must calculate the number of stitches to cast on" do

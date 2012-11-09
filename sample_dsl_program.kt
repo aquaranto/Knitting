@@ -4,7 +4,7 @@ row 1, k3, p3, k12, p3, k3
 row 2, p3, k3, p12, k3, p3
 repeat 2, 9 
 
-pattern 'other_banana'
+pattern 'other_bananas'
 cast_on 6
 row 1, k1, p1, k1, p1, k1, p1
 row 2, p1, k1, k1, p1, k1, p1

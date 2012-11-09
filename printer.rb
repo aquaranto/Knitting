@@ -1,1 +1,1 @@
-require "parser"
+require "./parser"

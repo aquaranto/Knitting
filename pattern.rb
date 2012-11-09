@@ -1,3 +1,5 @@
+require './row'
+
 class Pattern
   attr_reader :name
   attr_accessor :rows
@@ -8,13 +10,22 @@ class Pattern
     @name = name.capitalize
   end
 
-  #adds a new row object based on the class of the stitch args (stitches are held in an array, the visual representation is a string )
+  # Add a new row.
+  # 
+  # stitch_args - An array of string stitches.
+  #
+  # Returns an array of rows.
   def add_row(stitch_args)
     if stitch_args.instance_of? Array
       @rows << Row.new_from_stitches((@rows.length + 1), stitch_args)
     else
       @rows << Row.new_from_visual((@rows.length + 1), stitch_args)
     end
+  end
+
+  def render
+    rows.reverse.each(&:render)
+    puts
   end
 end
 
