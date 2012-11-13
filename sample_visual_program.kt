@@ -1,0 +1,15 @@
+'Crazy_bananas'
+V-V-V-VVV---VVV---VVV-V-V-V
+-V-V-V---VVV---VVV---V-V-V-
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+-V-V-V---VVV---VVV---V-V-V-
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+-V-V-V---VVV---VVV---V-V-V-
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+V-V-V-VVV---VVV---VVV-V-V-V
+-V-V-V---VVV---VVV---V-V-V-
