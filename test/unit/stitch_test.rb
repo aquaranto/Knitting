@@ -14,32 +14,53 @@ end
 
 describe Knit do
   before do
-    @normal = "V" 
-    @inverse = "-"
+    @normal_stitch = "V" 
+    @inverse_stitch = "-"
+    @normal_visual = "k"
+    @inverse_visual = "p" 
     @stitch = Knit.new
   end
 
-  it "must know its normal marker" do
-    @stitch.to_s(:normal).must_equal(@normal)
+  it "must know its normal stitch marker" do
+    @stitch.to_s(:stitch, :normal).must_equal(@normal_stitch)
   end
 
-  it "must know its inverse marker" do
-    @stitch.to_s(:inverse).must_equal(@inverse)
+  it "must know its inverse stitch marker" do
+    @stitch.to_s(:stitch, :inverse).must_equal(@inverse_stitch)
   end
+  
+  it "must know its normal visual marker" do
+    @stitch.to_s(:visual, :normal).must_equal(@normal_visual)
+  end
+
+  it "must know its inverse visual marker" do
+    @stitch.to_s(:visual, :inverse).must_equal(@inverse_visual)
+  end
+
 end
 
 describe Purl do
   before do
-    @normal = "-" 
-    @inverse = "V"
+    @normal_stitch = "-" 
+    @inverse_stitch = "V"
+    @normal_visual = "p"
+    @inverse_visual = "k" 
     @stitch = Purl.new
   end
 
-  it "must know its normal marker" do
-    @stitch.to_s(:normal).must_equal(@normal)
+  it "must know its normal stitch marker" do
+    @stitch.to_s(:stitch, :normal).must_equal(@normal_stitch)
   end
 
-  it "must know its inverse marker" do
-    @stitch.to_s(:inverse).must_equal(@inverse)
+  it "must know its inverse stitch marker" do
+    @stitch.to_s(:stitch, :inverse).must_equal(@inverse_stitch)
+  end
+
+  it "must know its normal visual marker" do
+    @stitch.to_s(:visual, :normal).must_equal(@normal_visual)
+  end
+
+  it "must know its inverse visual marker" do
+    @stitch.to_s(:visual, :inverse).must_equal(@inverse_visual)
   end
 end

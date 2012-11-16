@@ -3,12 +3,13 @@ require './row'
 
 describe Row do
   before do 
-    @row_number = 2
     @odd_number = 1
+    @row_number = 2
     @stitch_args = ['k3', 'p2', 'k2', 'p2', 'k3']
     @row = Row.new_from_stitches(@row_number, @stitch_args)
     @odd_row = Row.new_from_stitches(@odd_number, @stitch_args)
-    @visual_row = Row.new_from_visual(@row_number, "VVV--V--VVV")
+    @visual_row_1 = Row.new_from_visual(@row_number, "VVV--V--VVV")
+    @visual_row_2 = Row.new_from_visual(@row_number, "VVV--V--VVV")
     
   end
 
@@ -40,6 +41,11 @@ describe Row do
   end
 
   it "must calculate the number of stitches to cast on" do
-    @visual_row.casted_on.must_equal 11
+    @visual_row_1.casted_on.must_equal 11
   end
+
+  it "must have equal casted on count for multiple rows in the same pattern." do
+    @visual_row_1.casted_on.must_equal @visual_row_2.casted_on
+  end
+
 end

@@ -19,7 +19,7 @@ module Parser
     end
 
     def row(number, *args)
-      @pattern.add_row(args)
+      @pattern.add_row(:stitch, args)
     end
 
     def cast_on(stitch_count)
@@ -38,12 +38,44 @@ module Parser
         super
       end
     end
-
   end
-end
+
+  class Visual
+    attr_accessor :stitches, :patterns, :pattern_name
+    def self.parse(filename)
+      @stitches = []
+      File.open(filename).each do |line|
+        line.chomp!
+        @stitches << line
+      end     
+      @stitches.reverse!
+      p @stitches
+      @pattern_name = @stitches.pop
+      parser = new
+      pattern(@pattern_name)
+      parser
+    end
+
+    def initialize
+      @patterns = []
+    end
+
+    def pattern(name)
+      @patterns << Pattern.new(name)
+    end
+  end
+end  
 
 knitter = Parser::Stitches.parse "sample_dsl_program.kt"
 knitter.patterns.each do |pattern|
   p pattern.name
-  pattern.render
-end
+  pattern.render_stitches
+end 
+
+purler = Parser::Visual.parse "sample_visual_program.kt"
+  purler.patterns.each do |pattern|
+    p purler.pattern_name
+    pattern.render_visual
+  end
+
+

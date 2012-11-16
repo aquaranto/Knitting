@@ -15,16 +15,21 @@ class Pattern
   # stitch_args - An array of string stitches.
   #
   # Returns an array of rows.
-  def add_row(stitch_args)
-    if stitch_args.instance_of? Array
+  def add_row(type, stitch_args)
+    if type == :stitch
       @rows << Row.new_from_stitches((@rows.length + 1), stitch_args)
-    else
+    elsif type == :visual
       @rows << Row.new_from_visual((@rows.length + 1), stitch_args)
     end
   end
 
-  def render
-    rows.reverse.each(&:render)
+  def render_stitches
+    rows.reverse.each(&:render_stitches)
+    puts
+  end
+
+  def render_visual
+    rows.each(&:render_visual)
     puts
   end
 end

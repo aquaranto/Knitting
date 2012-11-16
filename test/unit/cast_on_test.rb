@@ -37,6 +37,4 @@ describe CastOn do
       @cast_on.stitch_create.all? {|s| s.instance_of?(Purl) }.must_equal true
     end
   end
-
-
 end

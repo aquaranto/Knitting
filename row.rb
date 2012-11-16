@@ -27,7 +27,7 @@ class Row
       when 'p'
         stitch_type = :purl
       end
-      stitch_count = pair[1].to_i
+      stitch_count = pair[1..3].to_i
       new_row.stitches += CastOn.new(stitch_type, stitch_count).stitch_create
     end
     new_row
@@ -39,9 +39,16 @@ class Row
     @row_number = row_number.to_i
   end
 
-  def render
+  def render_visual
     print_order.each do |stitch|
-      print stitch.to_s(orientation)
+      print stitch.to_s(:visual, orientation)
+    end
+    puts
+  end
+
+  def render_stitches
+    print_order.each do |stitch|
+      print stitch.to_s(:stitch, orientation)
     end
     puts
   end
